@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace SimplePhilipsHueLibTestApp
 {
     public partial class Form1 : Form
     {
@@ -31,11 +31,16 @@ namespace WindowsFormsApp1
             comboBox1.Items.Add("3");
             comboBox1.SelectedIndex = 0;
             radioButton1.Checked = true;
+            textBox1.Text = SimplePhilipsHueLibTestApp.Properties.Settings.Default.ip;
+            textBox2.Text = SimplePhilipsHueLibTestApp.Properties.Settings.Default.username;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             HueBridge = new PhilipsHue(textBox1.Text, textBox2.Text);
+            SimplePhilipsHueLibTestApp.Properties.Settings.Default.ip = textBox1.Text;
+            SimplePhilipsHueLibTestApp.Properties.Settings.Default.username = textBox2.Text;
+            SimplePhilipsHueLibTestApp.Properties.Settings.Default.Save();
         }
 
         private void button2_Click(object sender, EventArgs e)
